@@ -6,7 +6,8 @@ def caesar_cipher (string, number_shift)
     alphabet = ('a'..'z').to_a
     #creates alphabet array, and the index numbers will be used to shift the string
     string.map! {|character| character = alphabet.index(character) }
-    p alphabet
+    string.map! {|number| number -= number_shift}
+    string.map! {|character| character = alphabet[character]}
 
     p string
 end
