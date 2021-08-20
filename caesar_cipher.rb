@@ -27,9 +27,9 @@ def seperate_hashes(hash, number_shift)
 
     uppercase_modified_hash = Hash[array_numbers_to_chars(uppercase_numbers_array, uppercase_alphabet)]
     lowercase_modified_hash = Hash[array_numbers_to_chars(lowercase_numbers_array, lowercase_alphabet)]
-    p uppercase_modified_hash
-    p lowercase_modified_hash
-    p other_character_hash
+
+    sorted_combined_hashes = Hash[uppercase_modified_hash.merge(lowercase_modified_hash).merge(other_character_hash).sort]
+    p sorted_combined_hashes.values.to_a.join("")
 
 end
 
