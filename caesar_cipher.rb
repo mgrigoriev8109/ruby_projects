@@ -4,22 +4,36 @@ def string_to_hash(string)
     index_array = Hash[ string_array.map.with_index {|char, index| [index, char]}]
 end
 
+def hash_values_to_numbers(hash, alphabet, number_shift)
+    hash.map {|index, char| [index, char = alphabet.index(char) - number_shift]}
+end
 
-def hash_values_to_numbers(hash)
+def array_numbers_to_chars(hash, alphabet)
+    hash.map {|index, char| [index, char = alphabet[char]]}
+end
+
+def seperate_hashes(hash, number_shift)
     lowercase_alphabet = ('a'..'z').to_a
     uppercase_alphabet = ('A'..'Z').to_a
     total_alphabet = lowercase_alphabet + uppercase_alphabet
 
     uppercase_hash = hash.select {|index, char| uppercase_alphabet.include?(char)}
+ 
     lowercase_hash = hash.select {|index, char| lowercase_alphabet.include?(char)}
     other_character_hash = hash.delete_if {|index, char| total_alphabet.include?(char)}
 
-    p uppercase_hash
-    p lowercase_hash
+    uppercase_numbers_array = hash_values_to_numbers(uppercase_hash, uppercase_alphabet, number_shift)
+    lowercase_numbers_array = hash_values_to_numbers(lowercase_hash, lowercase_alphabet, number_shift)
+
+    uppercase_modified_hash = Hash[array_numbers_to_chars(uppercase_numbers_array, uppercase_alphabet)]
+    lowercase_modified_hash = Hash[array_numbers_to_chars(lowercase_numbers_array, lowercase_alphabet)]
+    p uppercase_modified_hash
+    p lowercase_modified_hash
     p other_character_hash
+
 end
 
-hash_values_to_numbers(string_to_hash("WhAt IsthIIs!!. "))
+seperate_hashes(string_to_hash("WhAt IsthIIs!!. "), 5)
 =begin
 def caesar_cipher (string, number_shift)
 
