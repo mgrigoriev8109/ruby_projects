@@ -1,15 +1,25 @@
 
-def split_string(string)
+def string_to_hash(string)
     string_array = string.split("")
-index_array = string_array.map.with_index {|char, index| [char, index]}
-p index_array
-    uppercase_hash = Hash.new
-    other_characters_hash = Hash.new    
-    lowercase_alphabet = ('a'..'z').to_a
-    uppercase_alphabet = ('A'..'Z').to_a
+    index_array = Hash[ string_array.map.with_index {|char, index| [index, char]}]
 end
 
-split_string("What isthi")
+
+def hash_values_to_numbers(hash)
+    lowercase_alphabet = ('a'..'z').to_a
+    uppercase_alphabet = ('A'..'Z').to_a
+    total_alphabet = lowercase_alphabet + uppercase_alphabet
+
+    uppercase_hash = hash.select {|index, char| uppercase_alphabet.include?(char)}
+    lowercase_hash = hash.select {|index, char| lowercase_alphabet.include?(char)}
+    other_character_hash = hash.delete_if {|index, char| total_alphabet.include?(char)}
+
+    p uppercase_hash
+    p lowercase_hash
+    p other_character_hash
+end
+
+hash_values_to_numbers(string_to_hash("WhAt IsthIIs!!. "))
 =begin
 def caesar_cipher (string, number_shift)
 
