@@ -1,6 +1,6 @@
 def string_to_hash(string)
     string_array = string.split("")
-    index_array = Hash[ string_array.map.with_index {|char, index| [index, char]}]
+    index_hash = Hash[ string_array.map.with_index {|char, index| [index, char]}]
 end
 
 def hash_values_to_numbers(hash, alphabet, number_shift)
