@@ -1,9 +1,19 @@
 
-
-def caesar_cipher (string, number_shift)
+def split_string(string)
     string_array = string.split("")
-   
-    alphabet = ('a'..'z').to_a
+index_array = string_array.map.with_index {|char, index| [char, index]}
+p index_array
+    uppercase_hash = Hash.new
+    other_characters_hash = Hash.new    
+    lowercase_alphabet = ('a'..'z').to_a
+    uppercase_alphabet = ('A'..'Z').to_a
+end
+
+split_string("What isthi")
+=begin
+def caesar_cipher (string, number_shift)
+
+    lowercase_alphabet = ('a'..'z').to_a
     capitalized_alphabet = ('A'..'Z').to_a
 
     capitalized_array = string_array.filter_map {|element| element = element capitalized_alphabet.include?(element)}
@@ -25,3 +35,4 @@ def caesar_cipher (string, number_shift)
 end
 
 caesar_cipher("What is this!", 2)
+=end
