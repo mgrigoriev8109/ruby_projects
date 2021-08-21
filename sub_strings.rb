@@ -6,8 +6,12 @@ dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","o
 
 def substrings(word, dictionary)
   #take word and turn it into array
-  word.to_a
+  p word.split("")
   #create an empty hash which will contain the substrings found in og string
+  substrings_found_hash = Hash.new
+  #compare the word to the dictionary by iterating through each letter of the word, 
+  #comparing it to each letter of each dictionary word
 
-  #cycle through dictionary using each, if 
 end
+
+substrings("below", dictionary)
