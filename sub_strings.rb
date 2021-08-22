@@ -4,20 +4,15 @@
 =end
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
-def substrings(word, dictionary)
-  #take word and turn it into array
-  array_of_characters = word.split("")
-  #create an empty hash which will contain the substrings found in og string
-  substrings_found_hash = Hash.new
-  #compare the word to the dictionary by iterating through each letter of the word, 
-  #comparing it to each letter of each dictionary word
-  dictionary.reduce (Hash.new(0)) do|word, count|
-    array_of_characters.each { |character| 
-      if word.include?(character) 
-        result[vote]++
-      }
-    result
+def substrings(input_word, dictionary)
+  matching_word = dictionary.reduce (Hash.new(0)) do |result_hash, dictionary_word|
+    if dictionary_word == input_word 
+      result_hash[dictionary_word]+= 1
+    end
+  result_hash
   end
+
+  p matching_word
 
 end
 
