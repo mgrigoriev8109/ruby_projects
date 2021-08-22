@@ -5,15 +5,22 @@
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
 def substrings(input_word, dictionary)
-  matching_word = dictionary.reduce (Hash.new(0)) do |result_hash, dictionary_word|
-    if dictionary_word == input_word 
-      result_hash[dictionary_word]+= 1
-    end
-  result_hash
-  end
+  input_word_array = input_word.split(" ")
 
-  p matching_word
+  matching_words = dictionary.reduce (Hash.new(0)) do |result_hash, dictionary_word|
+    input_word_array.each do |word|
+
+      if word.include?(dictionary_word)
+        result_hash[dictionary_word]+= 1
+      end
+
+    end
+
+    result_hash
+  end
+    
+    p matching_words
 
 end
 
-substrings("below", dictionary)
+substrings("below howdy", dictionary)
