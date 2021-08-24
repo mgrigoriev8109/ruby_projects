@@ -29,7 +29,7 @@ def stock_picker(array_of_days)
         profit_array[1]=current_value
     elsif current_value>profit_array[1]
         profit_array[1]=current_value
-    else current_value<profit_array[0]
+    elsif current_value<profit_array[0]
         profit_array[2]=current_value
     end
     profit_array
