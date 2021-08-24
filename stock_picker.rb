@@ -1,4 +1,4 @@
-require 'pry-byebug'
+
 
 def stock_picker(array_of_days)
   #reduce would probably be best for this
@@ -17,9 +17,10 @@ def stock_picker(array_of_days)
   #if array comes to a new possible lowest buy value, it sets that to possible_buy to test out in the future
 
   #only problem is that this current code will return values, not indexes, but that seems like a simple problem to solve
-  binding.pry
+  
   highest_profit = array_of_days.reduce(Array.new(3)) do |profit_array, current_value|
-    if (current_value<profit_array[0] && profit_array[0]==profit_array[2])
+  
+    if  profit_array[0]==nil
         profit_array[0]= current_value
         profit_array[1]= current_value
         profit_array[2]= current_value
@@ -37,6 +38,6 @@ def stock_picker(array_of_days)
   p highest_profit
 end
 
-> stock_picker([17,3,6,9,15,8,6,1,10])
+stock_picker([17,3,6,9,15,8,6,1,10,100])
 
     
