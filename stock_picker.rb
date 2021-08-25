@@ -21,21 +21,22 @@ def stock_picker(array_of_days)
   highest_profit = array_of_days.reduce(Array.new(3)) do |profit_array, current_value|
   
     if  profit_array[0]==nil
-        profit_array[0]= current_value
-        profit_array[1]= current_value
-        profit_array[2]= current_value
-    elsif ((current_value-profit_array[2]) > (profit_array[1]-profit_array[0]))
-        profit_array[0]=profit_array[2]
-        profit_array[1]=current_value
-    elsif current_value>profit_array[1]
-        profit_array[1]=current_value
-    elsif current_value<profit_array[0]
-        profit_array[2]=current_value
+        profit_array[0]= [current_value, array_of_days.index(current_value)]
+        profit_array[1]= [current_value, array_of_days.index(current_value)]
+        profit_array[2]= [current_value, array_of_days.index(current_value)]
+    elsif ((current_value-profit_array[2][0]) > (profit_array[1][0]-profit_array[0][0]))
+        profit_array[0]= profit_array[2]
+        profit_array[1]= [current_value, array_of_days.index(current_value)]
+    elsif current_value>profit_array[1][0]
+        profit_array[1]= [current_value, array_of_days.index(current_value)]
+    elsif current_value < profit_array[0][0]
+        profit_array[2]= [current_value, array_of_days.index(current_value)]
     end
     profit_array
     
   end
-  p highest_profit
+  p profit_result = [highest_profit [0][1]] + [highest_profit[1][1]]
+  
 end
 
 stock_picker([17,3,6,9,15,8,6,1,10,100])
