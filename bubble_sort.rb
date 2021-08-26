@@ -1,5 +1,7 @@
 def bubble_sort(array)
+  if array[0] > array[1]
     array[0], array[1] = array[1], array[0]
+  end
   p array
 end
 
